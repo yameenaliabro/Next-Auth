@@ -1,11 +1,19 @@
-import React from 'react'
+"use client";
 
-function NextAuthUi() {
+import { Button } from 'antd';
+import { signOut, useSession } from 'next-auth/react';
+
+export default function ClientComponent() {
+    const { data: session, status } = useSession();
     return (
         <div>
-            <h1>NextAuthUi</h1>
+            ClientComponent {status}{' '}
+            {status === 'authenticated' &&
+                <>
+                    <h1>{session.user?.name}</h1>
+                    <Button type='primary' onClick={() => signOut()}>SignOut</Button>
+                </>
+            }
         </div>
-    )
+    );
 }
-
-export default NextAuthUi

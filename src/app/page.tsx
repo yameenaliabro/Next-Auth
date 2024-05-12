@@ -1,3 +1,4 @@
+import { Signup } from "@src/components/auth";
 import NextAuthUi from "@src/components/ui";
 
 export default function Home() {
